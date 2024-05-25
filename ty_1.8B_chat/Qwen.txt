@@ -1,0 +1,121 @@
+(llm) baitongyuan@node01:~/llm/Qwen/ty_1.8B_chat$ bash finetune_qlora_single_gpu_240521.sh -m ~/.cache/modelscope/hub/qwen/Qwen-1_8B-Chat-Int4 -d train.txt
+[2024-05-22 04:33:41,990] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+ [WARNING]  Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+ [WARNING]  sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+ [WARNING]  using untested triton version (2.1.0), only 1.0.0 is known to be compatible
+/home/baitongyuan/anaconda3/envs/llm/lib/python3.8/site-packages/transformers/deepspeed.py:23: FutureWarning: transformers.deepspeed module is deprecated and will be removed in a future version. Please import deepspeed modules directly from transformers.integrations
+  warnings.warn(
+Using `disable_exllama` is deprecated and will be removed in version 4.37. Use `use_exllama` instead and specify the version with `exllama_config`.The value of `use_exllama` will be overwritten by `disable_exllama` passed in `GPTQConfig` or stored in your config file.
+You passed `quantization_config` to `from_pretrained` but the model you're loading already has a `quantization_config` attribute and has already quantized weights. However, loading attributes (e.g. ['use_cuda_fp16', 'use_exllama', 'max_input_length', 'exllama_config', 'disable_exllama']) will be overwritten with the one you passed to `from_pretrained`. The rest will be ignored.
+CUDA extension not installed.
+CUDA extension not installed.
+Try importing flash-attention for faster inference...
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+trainable params: 53,673,984 || all params: 676,104,192 || trainable%: 7.9387
+Loading data...
+Formatting inputs...Skip in lazy mode
+/home/baitongyuan/anaconda3/envs/llm/lib/python3.8/site-packages/accelerate/accelerator.py:446: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches']). Please pass an `accelerate.DataLoaderConfiguration` instead: 
+dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False)
+  warnings.warn(
+Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+You are using an old version of the checkpointing format that is deprecated (We will also silently ignore `gradient_checkpointing_kwargs` in case you passed it).Please update to the new format on your modeling file. To use the new format, you need to completely remove the definition of the method `_set_gradient_checkpointing` in your model.
+--------------------------------------------------------------------------
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
+
+  Local host:              node01
+  Local adapter:           mlx5_0
+  Local port:              1
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   node01
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Using /fs1/private/user/baitongyuan/.cache/torch_extensions/py38_cu118 as PyTorch extensions root...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /fs1/private/user/baitongyuan/.cache/torch_extensions/py38_cu118/fused_adam/build.ninja...
+/home/baitongyuan/anaconda3/envs/llm/lib/python3.8/site-packages/torch/utils/cpp_extension.py:1967: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Building extension module fused_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_adam...
+Time to load fused_adam op: 0.3748795986175537 seconds
+  0%|                                                                                 | 0/62 [00:00<?, ?it/s]/home/baitongyuan/anaconda3/envs/llm/lib/python3.8/site-packages/torch/utils/checkpoint.py:464: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/home/baitongyuan/anaconda3/envs/llm/lib/python3.8/site-packages/torch/utils/checkpoint.py:464: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/home/baitongyuan/anaconda3/envs/llm/lib/python3.8/site-packages/torch/utils/checkpoint.py:464: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+{'loss': 0.8757, 'learning_rate': 0.0, 'epoch': 0.03}                                                        
+{'loss': 0.3053, 'learning_rate': 0.0003, 'epoch': 0.06}                                                     
+{'loss': 0.2828, 'learning_rate': 0.0003, 'epoch': 0.1}                                                      
+{'loss': 0.062, 'learning_rate': 0.0003, 'epoch': 0.13}                                                      
+{'loss': 0.0389, 'learning_rate': 0.0003, 'epoch': 0.16}                                                     
+{'loss': 0.0339, 'learning_rate': 0.0003, 'epoch': 0.19}                                                     
+{'loss': 0.0249, 'learning_rate': 0.0003, 'epoch': 0.22}                                                     
+{'loss': 0.0128, 'learning_rate': 0.0003, 'epoch': 0.26}                                                     
+{'loss': 0.0105, 'learning_rate': 0.0003, 'epoch': 0.29}                                                     
+{'loss': 0.0149, 'learning_rate': 0.0003, 'epoch': 0.32}                                                     
+{'loss': 0.0047, 'learning_rate': 0.0003, 'epoch': 0.35}                                                     
+{'loss': 0.0024, 'learning_rate': 0.0003, 'epoch': 0.38}                                                     
+{'loss': 0.0043, 'learning_rate': 0.0003, 'epoch': 0.42}                                                     
+{'loss': 0.0206, 'learning_rate': 0.0003, 'epoch': 0.45}                                                     
+{'loss': 0.0013, 'learning_rate': 0.0003, 'epoch': 0.48}                                                     
+{'loss': 0.0005, 'learning_rate': 0.0003, 'epoch': 0.51}                                                     
+{'loss': 0.0016, 'learning_rate': 0.0003, 'epoch': 0.54}                                                     
+{'loss': 0.0002, 'learning_rate': 0.0003, 'epoch': 0.58}                                                     
+{'loss': 0.0003, 'learning_rate': 0.0003, 'epoch': 0.61}                                                     
+{'loss': 0.0004, 'learning_rate': 0.0003, 'epoch': 0.64}                                                     
+{'loss': 0.0002, 'learning_rate': 0.0003, 'epoch': 0.67}                                                     
+{'loss': 0.0002, 'learning_rate': 0.0003, 'epoch': 0.7}                                                      
+{'loss': 0.0003, 'learning_rate': 0.0003, 'epoch': 0.74}                                                     
+{'loss': 0.0026, 'learning_rate': 0.0003, 'epoch': 0.77}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 0.8}                                                      
+{'loss': 0.0078, 'learning_rate': 0.0003, 'epoch': 0.83}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 0.86}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 0.9}                                                      
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 0.93}                                                        
+{'loss': 0.0009, 'learning_rate': 0.0003, 'epoch': 0.96}                                                     
+{'loss': 0.0157, 'learning_rate': 0.0003, 'epoch': 0.99}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.02}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.06}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.09}                                                     
+{'loss': 0.0005, 'learning_rate': 0.0003, 'epoch': 1.12}                                                     
+{'loss': 0.0004, 'learning_rate': 0.0003, 'epoch': 1.15}                                                     
+{'loss': 0.0009, 'learning_rate': 0.0003, 'epoch': 1.18}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.22}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.25}                                                     
+{'loss': 0.0002, 'learning_rate': 0.0003, 'epoch': 1.28}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.31}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.34}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.38}                                                     
+{'loss': 0.0002, 'learning_rate': 0.0003, 'epoch': 1.41}                                                     
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.44}                                                        
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.47}                                                     
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.5}                                                         
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.54}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.57}                                                     
+{'loss': 0.0001, 'learning_rate': 0.0003, 'epoch': 1.6}                                                      
+{'loss': 0.0007, 'learning_rate': 0.0003, 'epoch': 1.63}                                                     
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.66}                                                        
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.7}                                                         
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.73}                                                        
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.76}                                                        
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.79}                                                        
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.82}                                                        
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.86}                                                        
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.89}                                                        
+{'loss': 0.0026, 'learning_rate': 0.0003, 'epoch': 1.92}                                                     
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.95}                                                        
+{'loss': 0.0, 'learning_rate': 0.0003, 'epoch': 1.98}                                                        
+{'train_runtime': 284.33, 'train_samples_per_second': 7.034, 'train_steps_per_second': 0.218, 'train_loss': 0.02795228362083435, 'epoch': 1.98}
+100%|████████████████████████████████████████████████████████████████████████| 62/62 [04:44<00:00,  4.59s/it]
+/home/baitongyuan/anaconda3/envs/llm/lib/python3.8/site-packages/peft/utils/save_and_load.py:195: UserWarning: Could not find a config file in /home/baitongyuan/.cache/modelscope/hub/qwen/Qwen-1_8B-Chat-Int4 - will assume that the vocabulary was not modified.
+  warnings.warn(
